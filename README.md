@@ -11,11 +11,4 @@
 * __Carousel__
 
    Create an image carousel. This simple app should feature an image, along with two buttons [<] and [>], which cause the image to change the the previous or next, respectively. Refer to this [W3 Schools](https://www.w3schools.com/howto/howto_js_slideshow.asp) link if this task seems ambiguous. 
-  
-   
-### Notes
-
-* Feel free to add styles and comments to your solution as you see fit. 
-* Expectation is that this challenge will take a few hours at most, and can be completed within 5 business days after receiving it. 
-* Commit your changes to the master branch of your forked repo.
-* Let adam@mikmak.tv know when you're finished, or if you have any questions!
+ 
