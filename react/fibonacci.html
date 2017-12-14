@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Counter</title>
+    <!-- calling bootstrap to add some styling -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.min.js"></script>
+
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+
+  <body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var Counter = React.createClass({
+        getInitialState() {
+          return {
+            prev_count: 1,
+            count: 1,
+            status: 'white',
+            title: 'The Amazing React Fibonnacci Counter!'
+          };
+        },
+
+        /* checkStatus() is just a fun little function I wrote. It just checks what the count is at, and changes the text color accordingly.
+        I noticed that just mundanely clicking the function was quite unrewarding to the user. So, I added this way to give some feedback.
+        If I had more time, I would probably import a js library to speed up the background animation as the numbers got higher.
+        ToDo: The fact that the fibonnaci numbers are hardcoded can be percieved as an issue (should we know what the values are?), 
+        so I could change the text color based on how many times the user has clicked the button.  */
+        checkStatus() {
+          if(this.state.count < 987) {
+            this.setState({status: 'white'})
+          }
+          else if(this.state.count == 987){  
+              this.setState({status: 'yellow'})
+            }
+          else if(this.state.count == 28657) {
+            this.setState({status: 'orange'})
+          }
+          else if(this.state.count == 832040) {
+            this.setState({status: 'red'})
+          }
+        },
+
+        /* increment() is called every time the user presses the + button. Takes the latest value in the sequence (this.state.count)
+        and adds with the nth-1 number in the sequence (this.state.prev_count) */
+        increment() {
+          this.setState({prev_count: this.state.count});
+          this.setState({count: this.state.count + this.state.prev_count});
+          this.checkStatus();
+        },
+
+        /* decrement() is a function I wrote for fun. If you uncomment this function, and the button[name='decrement'] (located in this
+        components render function), you will be able to decrement the fibonnaci sequence as well! I was just curious, and decrementing took
+        slightly more thinking than incrementing, so it was fun to do.
+        decrement() {
+          if (this.state.count > 0) {
+            var difference = this.state.count - this.state.prev_count;
+            this.setState({count: this.state.prev_count}); 
+            this.setState({prev_count: difference}); 
+            this.checkStatus();
+          }
+        }, */
+        render() {
+          return (
+            <div className="app-container">
+              <div className="row">
+              </div>
+              <div className="panel panel-default">
+                <h1 className="app-title">{ this.state.title }</h1>
+                <div className="panel-body">
+                  <div className={"app-current-count " + this.state.status}>
+                    { this.state.count }
+                  </div>
+                  <div className="app-counter-buttons">
+
+                    {/*<button type="button" name="decrement" onClick={this.decrement}>-</button>*/}
+                    <button type="button" name="increment" onClick={this.increment}>+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        }
+        });
+
+        ReactDOM.render(<Counter />, document.getElementById('app'));
+
+      </script>
+
+  </body>
+</html>

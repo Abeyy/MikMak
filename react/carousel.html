@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>React Counter</title>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/carousel_styles.css">
+  </head>
+
+  <body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var Counter = React.createClass({
+        getInitialState() {
+          return {
+            count: 0,
+            image_array: ['../images/carousel/img_fjords_wide.jpg', '../images/carousel/img_mountains_wide.jpg', '../images/carousel/img_nature_wide.jpg']
+          };
+        },
+
+        /* displays the next image by incrementing the count, thus increasing the index of the array which selects which image is being depicted */
+        increment() {
+          if(this.state.count+1 < this.state.image_array.length){
+            this.setState({count: this.state.count + 1});  
+          }
+          else {
+            this.setState({count: 0})
+          }
+          
+        },
+        /* displays the next image by decrementing the count, thus decreasing the index of the array which selects which image is being depicted */
+        decrement() {
+          if(this.state.count == 0){
+            this.setState({count: this.state.image_array.length-1});  
+          }
+          else {
+            this.setState({count: this.state.count-1})
+          }
+        },
+        render() {
+          return (
+            <div className="app-container">
+                <div className="row row-mini">
+                </div>
+                <div className="row row-vh">
+                  <h1> Awesome React Carousel </h1>
+                  <h4> How many times will you click before you get bored? </h4>
+                </div>
+                <div className="row">
+                  <div className="col-lg-2 col-md-2">
+                  </div>
+                  <div className="carousel col-lg-8">
+                    <div className="image-container">
+                    <a className="prev" name="decrement" onClick={this.decrement}> &#10094; </a>
+                      <img src={this.state.image_array[this.state.count]} />
+                      <a className="next"  name="increment" onClick={this.increment}>&#10095;</a>
+                    </div>
+                  </div>
+                  <div className="col-lg-2 col-md-2">
+                  </div>
+                </div>
+              
+            </div>
+          );
+        }
+        });
+
+        ReactDOM.render(<Counter />, document.getElementById('app'));
+
+      </script>
+
+  </body>
+</html>

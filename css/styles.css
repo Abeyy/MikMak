@@ -1,0 +1,56 @@
+body {
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 24px;
+}
+
+.app-current-count {
+  background: #000;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px #00000014;
+  display: inline-block;
+  font-size: 48px;
+  padding: 12px 24px;
+}
+
+.app-counter-buttons {
+  margin: 24px;
+}
+
+.app-counter-buttons button {
+  font-size: 24px;
+  margin: 0 8px;
+  -webkit-appearance: none;
+  width: 60px;
+}
+
+.app-container {
+  background:url('../images/background.gif') no-repeat;
+  background-size: cover;
+  height:100vh;
+}
+
+.panel {
+  width: 50%;
+  margin:20% auto auto 25%;
+}
+
+.white {
+  color: white;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.orange {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
